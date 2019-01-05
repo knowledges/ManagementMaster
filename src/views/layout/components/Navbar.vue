@@ -1,0 +1,54 @@
+<template>
+  <el-menu class="navbar" mode="horizontal">
+    <!-- 全屏显示按钮 -->
+    <hamburger :toggle-click="toggleSideBar" :is-active="sidebar.opened" class="hamburger-container"/>
+    <!-- 文根目录 -->
+    <breadcrumb />
+    <!-- 右边头像菜单 -->
+    <!-- 专用到App.vue 中了 -->
+  </el-menu>
+</template>
+
+<script>
+import { mapGetters } from 'vuex'
+import Breadcrumb from '@/components/Breadcrumb'
+import Hamburger from '@/components/Hamburger'
+
+export default {
+  components: {
+    Breadcrumb,
+    Hamburger
+  },
+  computed: {
+    ...mapGetters([
+      'sidebar'
+    ])
+  },
+  methods: {
+    toggleSideBar() {
+      this.$store.dispatch('ToggleSideBar')
+    }
+  }
+}
+</script>
+
+<style rel="stylesheet/scss" lang="scss" scoped>
+.navbar {
+  height: 50px;
+  line-height: 50px;
+  border-radius: 0px !important;
+  .hamburger-container {
+    line-height: 58px;
+    height: 50px;
+    float: left;
+    padding: 0 10px;
+  }
+  .screenfull {
+    position: absolute;
+    right: 90px;
+    top: 16px;
+    color: red;
+  }
+}
+</style>
+
