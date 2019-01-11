@@ -1,5 +1,6 @@
 import { login, logout, getInfo } from '@/api/login'
 import { getToken, setToken, removeToken } from '@/utils/auth'
+import { rmvPowerList, rmvMenusList } from '@/utils/powers'
 
 const user = {
   state: {
@@ -66,6 +67,8 @@ const user = {
           commit('SET_TOKEN', '')
           commit('SET_ROLES', [])
           removeToken()
+          rmvPowerList()
+          rmvMenusList()
           resolve()
         }).catch(error => {
           reject(error)

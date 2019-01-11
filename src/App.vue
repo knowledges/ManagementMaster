@@ -13,30 +13,16 @@
       <nav class="header-nav">
         <div class="header-menu">
           <ul>
-            <li>
-              <a href="javascript:;;">
-                <span class="svg-container">
-                  <svg-icon icon-class="basics" />
-                </span>
-                基础框架
-              </a>
-            </li>
-            <li>
-              <a href="javascript:;;">
-                <span class="svg-container">
-                  <svg-icon icon-class="publics" />
-                </span>
-                通用组件
-              </a>
-            </li>
-            <li>
-              <a href="javascript:;;">
-                <span class="svg-container">
-                  <svg-icon icon-class="doc" />
-                </span>
-                文档
-              </a>
-            </li>
+            <template v-for="(item, key) in powers">
+              <li :key="key" @click="getMenus(item, key)">
+                <a href="javascript:;;">
+                  <span class="svg-container">
+                    <svg-icon :icon-class="item.meta.icon" />
+                  </span>
+                  {{ item.name }}
+                </a>
+              </li>
+            </template>
           </ul>
         </div>
         <!--<div class="header-func">-->
@@ -75,14 +61,26 @@ export default {
     ...mapGetters([
       'avatar',
       'token',
-      'roles'
+      'roles',
+      'powers',
+      'menus'
     ])
+  },
+  created() {
+    /* 第一次加载进来没有菜单需要手动加载一次 默认为树的第一个节点下的子类 */
+    if (this.menus.length <= 0) {
+      this.$store.dispatch('SetMenusList', this.powers[0].children)
+    }
   },
   methods: {
     logout() {
       this.$store.dispatch('LogOut').then(() => {
         location.reload() // 为了重新实例化vue-router对象 避免bug
       })
+    },
+    getMenus(obj, idx) {
+      /* 显示菜单列表 */
+      this.$store.dispatch('SetMenusList', obj.children)
     }
   }
 }

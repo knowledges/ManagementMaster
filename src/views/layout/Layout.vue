@@ -47,10 +47,11 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss" scoped>
   @import "src/styles/mixin.scss";
+  /*80 = header*/
   .app-wrapper {
     @include clearfix;
     position: relative;
-    height: 100%;
+    height: calc(100% - 80px);
     width: 100%;
     top: 80px;
     &.mobile.openSidebar{

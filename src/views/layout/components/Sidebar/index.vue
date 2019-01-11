@@ -22,9 +22,13 @@ export default {
   components: { SidebarItem },
   computed: {
     ...mapGetters([
-      'sidebar'
+      'sidebar',
+      'menus'
     ]),
     routes() {
+      /* 这里获取到的树需要异步载入 path 对应的文件 */
+      console.log(this.menus)
+      console.log(this.$router.options.routes)
       // 整体路由
       return this.$router.options.routes
     },
