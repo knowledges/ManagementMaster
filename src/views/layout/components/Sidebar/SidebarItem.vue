@@ -1,6 +1,6 @@
 <template>
+<!-- Hidden 里的参数 已定位Boolean；不然 menu 不能显示 -->
   <div v-if="!item.hidden&&item.children" class="menu-wrapper">
-
     <template v-if="hasOneShowingChild(item.children,item) && (!onlyOneChild.children||onlyOneChild.noShowingChildren)&&!item.alwaysShow">
       <app-link :to="resolvePath(onlyOneChild.path)">
         <el-menu-item :index="resolvePath(onlyOneChild.path)" :class="{'submenu-title-noDropdown':!isNest}">
@@ -29,7 +29,6 @@
         </app-link>
       </template>
     </el-submenu>
-
   </div>
 </template>
 

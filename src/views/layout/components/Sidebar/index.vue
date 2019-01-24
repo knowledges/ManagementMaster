@@ -26,15 +26,20 @@ export default {
       'menus'
     ]),
     routes() {
-      /* 这里获取到的树需要异步载入 path 对应的文件 */
-      console.log(this.menus)
-      console.log(this.$router.options.routes)
+      console.log(Array.isArray(this.$store.state.tree.menus))
       // 整体路由
-      return this.$router.options.routes
+      return this.$store.state.tree.menus
     },
     isCollapse() {
       return !this.sidebar.opened
     }
+  },
+  watch: {
+    routes(n, o) {
+      console.log(n)
+    }
+  },
+  methods: {
   }
 }
 </script>

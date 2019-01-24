@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import { isvalidUsername } from '@/utils/validate'
 
 export default {
@@ -69,6 +70,11 @@ export default {
       pwdType: 'password',
       redirect: undefined
     }
+  },
+  computed: {
+    ...mapGetters([
+      'powers'
+    ])
   },
   watch: {
     $route: {
@@ -106,6 +112,7 @@ export default {
       this.$store.dispatch('GetPowerTree').then(() => {
         this.loading = false
         this.$router.push({ path: this.redirect || '/' })
+        this.$store.dispatch('SetMenusList', this.powers[0].children)
       })
     }
   }

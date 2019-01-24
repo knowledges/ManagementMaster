@@ -19,6 +19,17 @@ router.beforeEach((to, from, next) => {
       console.log('用户信息', store.getters.roles)
       if (store.getters.powers.length === 0) {
         store.dispatch('GetPowerTree')
+          .then(route => {
+            /* router  数组的插入 新的元素 */
+            var array = []
+            route.forEach(item => {
+              if (Array.isArray(item.children) && item.children.length > 0) {
+                array = array.concat(item.children)
+              }
+            })
+            router.addRoutes(array)
+          })
+          .catch(error => { console.error(error) })
       }
       if (store.getters.roles.length === 0) {
         store.dispatch('GetInfo').then(res => { // 拉取用户信息

@@ -51,3 +51,23 @@ export function setMenusList(data) {
 export function rmvMenusList() {
   return sessionStorage.removeItem('MenusList')
 }
+
+/**
+ * 路由重构【将 component 异步导入】
+ * author: woods.qiu
+ * time: 2019年1月23日
+ */
+export function getRouterRestructure(data) {
+  data.forEach(item => {
+    if (item.component) {
+      /* TODO 这里引入的组件Layout 不对 */
+      item.component = () => import('/src' + item.component)
+      // item.component = resolve => require([`../${item.component}.vue`], resolve)
+    }
+
+    if (Array.isArray(item.children) && item.children.length > 0) {
+      item.children = getRouterRestructure(item.children)
+    }
+  })
+  return data
+}
