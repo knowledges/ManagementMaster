@@ -24,7 +24,7 @@ const tree = {
       return new Promise((resolve, reject) => {
         var tree = getPowerList()
         var route = []
-        /* TODO 这里 插入一个首页 */
+        /* TODO 这里 插入一个首页 目前使用的是dashboard */
         /* 如果本地不存在；再同步线上数据 */
         if (tree !== null) {
           commit('SET_POWER_TREE', tree)

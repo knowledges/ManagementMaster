@@ -97,7 +97,12 @@ export default {
         if (valid) {
           this.loading = true
           this.$store.dispatch('Login', this.loginForm).then(() => {
-            this.reqPowerTree()
+            this.loading = false
+            this.$router.push({ path: this.redirect || '/' })
+            /* 注：这里是为了让菜单加载出来后执行的 */
+            setTimeout(() => {
+              this.$store.dispatch('SetMenusList', this.powers[0].children)
+            }, 500)
           }).catch(() => {
             this.loading = false
           })
@@ -107,7 +112,7 @@ export default {
         }
       })
     },
-    reqPowerTree() {
+    reqPowerTree() { // 没有被使用
       /* 请求权限树 */
       this.$store.dispatch('GetPowerTree').then(() => {
         this.loading = false

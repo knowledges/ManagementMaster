@@ -52,6 +52,9 @@ export function rmvMenusList() {
   return sessionStorage.removeItem('MenusList')
 }
 
+/* Layout */
+import Layout from '../views/layout/Layout'
+
 /**
  * 路由重构【将 component 异步导入】
  * author: woods.qiu
@@ -59,10 +62,12 @@ export function rmvMenusList() {
  */
 export function getRouterRestructure(data) {
   data.forEach(item => {
-    if (item.component) {
-      /* TODO 这里引入的组件Layout 不对 */
-      item.component = () => import('/src' + item.component)
-      // item.component = resolve => require([`../${item.component}.vue`], resolve)
+    if (item.resUrl) {
+      if (item.resUrl === 'Layout') {
+        item.component = Layout
+      } else {
+        item.component = resolve => require([`../views${item.resUrl}.vue`], resolve)
+      }
     }
 
     if (Array.isArray(item.children) && item.children.length > 0) {
