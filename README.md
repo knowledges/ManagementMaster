@@ -30,6 +30,7 @@ npm run build --report
 ## tabview
 ## 树
 ## 地图
+## 全局 notices // 暂时没有 
 
 # 问题
 # <h1>IE报vuex requires a Promise polyfill in this browser问题解决</h1>
