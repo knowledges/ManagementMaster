@@ -53,7 +53,7 @@
 </template>
 <script>
 import { getAlbumList } from '@/api/files'
-import ALBUM from '@/components/Album'
+import ALBUM from '@/components/Files/Album'
 export default {
   name: 'Album',
   components: { ALBUM },
