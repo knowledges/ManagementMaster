@@ -33,3 +33,4 @@ npm run build --report
 
 # 问题
 # <h1>IE报vuex requires a Promise polyfill in this browser问题解决</h1>
+# <h1>[vue-router] Duplicate named routes definition 解决方案：router 里不能有重复的name </h1>
