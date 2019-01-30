@@ -35,3 +35,4 @@ npm run build --report
 # 问题
 # <h1>IE报vuex requires a Promise polyfill in this browser问题解决</h1>
 # <h1>[vue-router] Duplicate named routes definition 解决方案：router 里不能有重复的name </h1>
+# <h1>Disallow self-closing on HTML void elements 解决方案:默认的HTML标签允许不闭合例如 input、img... 允许不闭合 </h1>
