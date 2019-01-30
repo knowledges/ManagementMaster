@@ -1,17 +1,17 @@
-# vue-admin-template
+# vue ManagementMaster
 
-> A minimal vue admin template with Element UI & axios & iconfont & permission control & lint
+> A minimal vue ManagementMaster with Element UI & axios & iconfont & permission control & lint
 
 ## Build Setup
 
 ```bash
 # Clone project
-git clone https://github.com/PanJiaChen/vue-admin-template.git
+git clone https://github.com/knowledges/ManagementMaster.git
 
 # Install dependencies
 npm install
 
-# Serve with hot reload at localhost:9528
+# Serve with hot reload at localhost:9090
 npm run dev
 
 # Build for production with minification
@@ -23,6 +23,16 @@ npm run build --report
 
 ## 附件上传（图片）（H5 只是手机拍照直线展示图片、PC 流程不变）
 ## 图片展示功能 
+```bash
+(https://github.com/knowledges/ManagementMaster/blob/master/static/image/album.jpg)
+--------------------------------------------------------------
+|  参数  |      描述                 |  默认                    |
+--------------------------------------------------------------
+| files |  数据集合                  | 图片url 对应的参数名为 image|
+| index |  从第几个打开（下标0开始)     | 0                        |
+---------------------------------------------------------------
+# TODO 缺少相片集功能
+```
 ## 台历功能
 ## 表格功能（表格的编辑【input、radio、checkbox、select...】）
 ## 富文本框
