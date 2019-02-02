@@ -22,7 +22,7 @@ npm run build --report
 ```
 
 ## 附件上传（图片）（H5 只是手机拍照直线展示图片、PC 流程不变）
-## 图片展示功能 
+# 图片展示功能 
 # <p><img src="https://github.com/knowledges/ManagementMaster/blob/master/static/image/album.jpg" alt="相册" title="相册" /></p>
 ```bash
 (https://github.com/knowledges/ManagementMaster/blob/master/static/image/album.jpg)
