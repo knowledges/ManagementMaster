@@ -68,7 +68,6 @@ export default {
   },
   created() {
     /* 第一次加载进来没有菜单需要手动加载一次 默认为树的第一个节点下的子类 */
-    console.log(this.powers)
     if (this.menus.length <= 0 && this.powers.length > 0) {
       var idx = sessionStorage.getItem('menu_idx') || 0
       this.$store.dispatch('SetMenusList', this.powers[idx].children)

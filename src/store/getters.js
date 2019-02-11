@@ -6,6 +6,7 @@ const getters = {
   name: state => state.user.name,
   roles: state => state.user.roles,
   powers: state => state.tree.powers,
-  menus: state => state.tree.menus
+  menus: state => state.tree.menus,
+  BMAP: state => state.map.BMAP
 }
 export default getters

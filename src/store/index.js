@@ -4,6 +4,7 @@ import app from './modules/app'
 import user from './modules/user'
 import tree from './modules/tree'
 import files from './modules/files'
+import map from './modules/map'
 import getters from './getters'
 
 Vue.use(Vuex)
@@ -13,7 +14,8 @@ const store = new Vuex.Store({
     app,
     user, // 用户基础信息
     tree, // 树形结构
-    files // 附件
+    files, // 附件
+    map
   },
   getters
 })
