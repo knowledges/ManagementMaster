@@ -87,3 +87,9 @@ HTML自闭合(self-closing)标签：
 <keygen>:该对象提供了一个安全的方式来验证用户。
 <source>: 标签为媒体元素（比如 和 ）定义媒体资源。
 ```
+
+## 地图警告
+```bash
+将 api 替换 getscript
+<script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak=myAK"></script>
+```
