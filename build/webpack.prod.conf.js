@@ -11,6 +11,7 @@ const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+// var ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
 
 function resolve(dir) {
   return path.join(__dirname, '..', dir)
@@ -43,19 +44,19 @@ const webpackConfig = merge(baseWebpackConfig, {
       'process.env': env
     }),
     // 打包添加 cache 缓存
-    new ParallelUglifyPlugin({
-      cacheDir: '.cache/',
-      uglifyJS:{
-        output: {
-          comments: false
-        },
-        compress: {
-          warnings: false,
-          drop_debugger: true,
-          drop_console: true
-        }
-      }
-    }),
+    // new ParallelUglifyPlugin({
+    //   cacheDir: '.cache/',
+    //   uglifyJS:{
+    //     output: {
+    //       comments: false
+    //     },
+    //     compress: {
+    //       warnings: false,
+    //       drop_debugger: true,
+    //       drop_console: true
+    //     }
+    //   }
+    // }),
     // extract css into its own file
     new MiniCssExtractPlugin({
       filename: utils.assetsPath('css/[name].[contenthash:8].css'),

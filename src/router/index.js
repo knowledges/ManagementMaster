@@ -146,7 +146,7 @@ export const constantRouterMap = [
 ]
 
 export default new Router({
-  // base: '/woods/',  // 外网
+  // base: '/woods/', // 外网
   mode: 'history',
   scrollBehavior: () => ({ x: 0, y: 0 }),
   routes: constantRouterMap

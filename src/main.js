@@ -19,6 +19,14 @@ Vue.use(ElementUI, { locale })
 
 Vue.config.productionTip = false
 
+const errorHandler = (error, vm, info) => {
+  console.error('全局异常')
+  console.error(error)
+  console.error(info)
+}
+Vue.config.errorHandler = errorHandler
+Vue.prototype.$throw = (error) => errorHandler(error, this)
+
 new Vue({
   el: '#app',
   router,
