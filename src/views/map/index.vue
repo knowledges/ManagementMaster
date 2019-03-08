@@ -10,32 +10,63 @@
 </style>
 <template>
   <div id="maps">
-    <!-- Map Dom -->
+    <baidu-map class="bm-view" :center="{lng: '118.779142', lat: '31.981107'}" :zoom="15">
+      <!-- map -->
+      <!--<bm-view style="width: 100%; height: 100%; flex: 1;"></bm-view>-->
+    </baidu-map>
   </div>
 </template>
 <script>
 import BaiduMap from 'BaiduMap'
-// import MarkerClusterer from 'BaiduMap.markerclusterer'
+import BmView from 'BmView'
 export default {
   name: 'Map',
   data() {
-    return {}
+    return {
+      MyLocation: [{
+        lng: '118.759319',
+        lat: '31.969347',
+        title: '牛首坊'
+      }],
+      coords: [
+        {
+          lng: '118.783549',
+          lat: '31.990869',
+          title: '阅城国际花园'
+        },
+        {
+          lng: '118.779142',
+          lat: '31.981107',
+          title: '东软大楼'
+        },
+        {
+          lng: '118.77444',
+          lat: '31.981409',
+          title: '新华汇'
+        },
+        {
+          lng: '118.775859',
+          lat: '31.971451',
+          title: '南京徐工汽车制造有限公司'
+        },
+        {
+          lng: '118.792675',
+          lat: '31.981804',
+          title: '中兴通讯'
+        },
+        {
+          lng: '118.79197',
+          lat: '31.986325',
+          title: '江苏舜天凯信贸易有限公司'
+        }
+      ]
+    }
   },
   computed: {
   },
+  components: { BaiduMap, BmView },
   created() {},
   mounted() {
-    console.log(BaiduMap)
-//    console.log (MarkerClusterer)
-    var map = new BaiduMap.Map('maps') // 创建地图实例
-    var point = new BaiduMap.Point(118.779102, 31.981199) // 创建中心点坐标
-    map.centerAndZoom(point, 16) // 初始化地图，设置中心点坐标和地图级别
-
-    var marker = new BaiduMap.Marker(point) // 创建标注
-    map.addOverlay(marker) // 将标注添加到地图中
-
-    map.enableScrollWheelZoom() //启用滚轮放大缩小
-    map.addControl(new BaiduMap.ScaleControl()) // 比例尺
   },
   methods: {}
 }

@@ -26,7 +26,7 @@ module.exports = {
     app: ['babel-polyfill', './src/main.js']
   },
   externals: {
-    'BaiduMap': 'BMap'
+    // 'BaiduMap': 'BMap'
   },
   output: {
     path: config.build.assetsRoot,

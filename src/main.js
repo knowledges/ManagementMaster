@@ -8,6 +8,8 @@ import locale from 'element-ui/lib/locale/lang/en' // lang i18n
 
 import '@/styles/index.scss' // global css
 
+import BaiduMapBusiness from 'vue-baidu-map-business'
+
 import App from './App'
 import router from './router'
 import store from './store'
@@ -16,6 +18,10 @@ import '@/icons' // icon
 import '@/permission' // permission control
 
 Vue.use(ElementUI, { locale })
+Vue.use(BaiduMapBusiness, {
+  // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
+  ak: 'axUsKS7GkUqaFhjBq7DvTWR9pPCGFqhW'
+})
 
 Vue.config.productionTip = false
 
