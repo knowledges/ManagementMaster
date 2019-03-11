@@ -236,7 +236,7 @@ export default {
         --this.current
         this.viewportUrl = this.files[Number(this.current)].image
       } else {
-        this.message = '当前为最后一页'
+        this.message = '当前为第一页'
       }
       console.log('当前页：', this.current)
     },
@@ -245,7 +245,7 @@ export default {
         ++this.current
         this.viewportUrl = this.files[Number(this.current)].image
       } else {
-        this.message = '当前为第一页'
+        this.message = '当前为最后一页'
       }
     },
     closeClk() {
