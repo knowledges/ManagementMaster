@@ -18,6 +18,7 @@ import '@/icons' // icon
 import '@/permission' // permission control
 
 Vue.use(ElementUI, { locale })
+console.log(BaiduMapBusiness)
 Vue.use(BaiduMapBusiness, {
   // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
   ak: 'axUsKS7GkUqaFhjBq7DvTWR9pPCGFqhW'
