@@ -170,7 +170,7 @@
 </style>
 <template>
   <div id="photoview-container">
-    <div class="photoview-tools" @click="closeClk">
+    <div class="photoview-tools" @click="close">
       <div class="button return">返回</div>
     </div>
     <div class="photoview-window">
@@ -205,6 +205,15 @@ export default {
   name: 'Album',
   components: {},
   props: {
+    name: {
+      type: String, // 要展示的图片字段名称
+      required: true,
+      default: ''
+    },
+    prefix: {
+      type: String, // 前缀
+      default: ''
+    },
     files: {
       type: Array,
       default: () => []
@@ -212,45 +221,62 @@ export default {
     index: {
       type: Number,
       default: 0
+    },
+    close: {
+      type: Function,
+      required: true,
+      default: () => {}
     }
   },
   data() {
     return {
-      viewportUrl: '',
-      current: 0,
-      photos: [],
-      message: '当前为第一页'
+      viewportUrl: '', // 图片显示的地址
+      current: 0 // 当前页
     }
   },
-  watchs: {},
+  computed: {
+    message: {
+      get: function() {
+        if (this.current === 0) {
+          return '当前为第一页'
+        }
+        if (this.current === this.files.length - 1) {
+          return '当前为最后一页'
+        }
+      },
+      set: function(v) { }
+    }
+  },
+  watchs: {
+    index(val) {
+      this.current = val
+    },
+    name(val) {
+      this.viewportUrl = this.prefix + this.files[Number(this.current)][this.name]
+    },
+    prefix(val) {
+      this.viewportUrl = this.prefix + this.files[Number(this.current)][this.name]
+    }
+  },
   mounted() {
     this.current = this.index
     this.init()
   },
   methods: {
     init() {
-      this.viewportUrl = this.files[Number(this.current)].image
+      this.viewportUrl = this.prefix + this.files[Number(this.current)][this.name]
     },
     leftClk() {
       if (Number(this.current) > 0) {
         --this.current
-        this.viewportUrl = this.files[Number(this.current)].image
-      } else {
-        this.message = '当前为第一页'
+        this.viewportUrl = this.prefix + this.files[Number(this.current)][this.name]
       }
-      console.log('当前页：', this.current)
     },
     rightClk() {
       if (Number(this.current) < (Number(this.files.length) - 1)) {
         ++this.current
-        this.viewportUrl = this.files[Number(this.current)].image
-      } else {
-        this.message = '当前为最后一页'
+        this.viewportUrl = this.prefix + this.files[Number(this.current)][this.name]
       }
-    },
-    closeClk() {
-      /* 改变外层展示的状态 */
-      this.$parent.isShow = false
     }
   }
 }

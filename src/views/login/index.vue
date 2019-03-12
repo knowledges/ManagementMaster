@@ -99,6 +99,7 @@ export default {
           this.$store.dispatch('Login', this.loginForm).then(() => {
             this.loading = false
             this.$router.push({ path: this.redirect || '/' })
+            console.log('菜单=》', this.powers)
             /* 注：这里是为了让菜单加载出来后执行的 */
             setTimeout(() => {
               this.$store.dispatch('SetMenusList', this.powers[0].children)

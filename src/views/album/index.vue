@@ -44,10 +44,13 @@
         </template>
       </ul>
     </div>
-    <ALBUM v-if="isShow" :files="albumList" :index="current">
+    <ALBUM v-if="isShow" :files="albumList" :index="current" :name="'image'" :close="() => isShow=false">
       <!-- 相册组件 -->
+      <!-- name: 图片路径对应展示的字段  -->
+      <!-- prefix: 前缀 -->
       <!-- albumList: 数据源 -->
       <!-- current: 当前页 -->
+      <!-- close: 关闭的Function-->
     </ALBUM>
   </div>
 </template>
@@ -73,6 +76,7 @@ export default {
       getAlbumList().then(response => {
         if (Number(response.code) === 200) {
           this.albumList = response.data.items
+          console.log(this.albumList)
         }
       })
     },
@@ -80,7 +84,7 @@ export default {
       console.log(item, index)
       this.current = index
       this.isShow = true
-    }
+    },
   }
 }
 </script>
