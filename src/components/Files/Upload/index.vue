@@ -151,7 +151,7 @@ import { validatPHONE } from '@/utils/validate'
 export default {
   name: 'Upload',
   components: {},
-  props: {},
+  props: { },
   data() {
     return {
       imgList: [],
@@ -223,6 +223,7 @@ export default {
     }, // 点击事件，弹出选择摄像头和相册的选项
     fileChange(el) {
       /* eslint-disable */
+      console.log($('#upload_file').get(0))
       this.files = $('#upload_file').get(0).files
       for (let i = 0; i < this.files.length; i++) {
         this.datas.append('file', this.files[i])
@@ -238,6 +239,7 @@ export default {
         if (files[i].type !== '') {
           this.fileAdd(files[i])
         } else {
+          console.log('非图片类型？')
           this.folders(fileList.items[i])
         }
       }
@@ -249,11 +251,50 @@ export default {
       if (file.type.indexOf('image') == -1) {
         console.log('非图片')
       } else {
+        /* TODO 缺少如下字段
+        * fileData
+        * fileExtension: 后缀
+        * fileName: 名称
+        * fileSize:
+        * isImg: 是否是图片
+        * src
+        * */
+        console.log(file)
+        var reader = new FileReader()
+        reader.vue = this
+        reader.readAsDataURL(file)
+        reader.onload = function(e) {
+          console.log(e)
+          file.src = this.result
+          file.idx = 0
+          var fileExtension = file.name.lastIndexOf('.') > -1 ? file.name.substring(file.name.lastIndexOf('.') + 1) : '未知类型'
+          var obj = {}
+          obj.fileData = this.result.substring(this.result.indexOf(',') + 1)
+          obj.fileExtension = fileExtension
+          obj.fileName = file.name
+          obj.fileSize = file.size
+          obj.isImg = true
+          obj.src = file.src
+          obj.file = file
+          console.log(obj)
+          this.vue.imgList.push(obj) // 移除原来前套曾
+        }
+      }
+      console.log('此时数据 =>', this.imgList)
+    },
+    fileAdd1(file) {
+      // 总大小
+      this.size = Number(this.size) + Number(file.size)
+      /* 判断是否为图片文件 注：'image/*' 已经写死了,只会是图片 */
+      if (file.type.indexOf('image') == -1) {
+        console.log('非图片')
+      } else {
         var reader = new FileReader()
         reader.vue = this
         reader.readAsDataURL(file)
         reader.onload = function() {
           file.src = this.result
+          file.idx = 0
           this.vue.imgList.push({ file })
         }
       }
@@ -276,8 +317,9 @@ export default {
       })
     },
     fileDel(index) {
-      this.size = this.size - this.imgList[index].file.size // 总大小
+      this.size = this.size - this.imgList[index].file.fileSize // 总大小
       this.imgList.splice(index, 1)
+      console.log('此时数据 =>', this.imgList)
     },
     bytesToSize(bytes) {
       if (bytes === 0) {

@@ -1,6 +1,6 @@
 {
   "name": "Management-Master",
-  "version": "3.8.0",
+  "version": "1.0.0",
   "license": "MIT",
   "description": "A vue Management Master with Element UI & axios & iconfont & permission control & lint",
   "author": "woods.qiu",
@@ -14,6 +14,8 @@
     "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml"
   },
   "dependencies": {
+    "ag-grid-community": "^20.2.0",
+    "ag-grid-vue": "^20.2.0",
     "axios": "0.18.0",
     "babel-polyfill": "^6.26.0",
     "element-ui": "2.4.6",
@@ -21,7 +23,9 @@
     "normalize.css": "7.0.0",
     "nprogress": "0.2.0",
     "vue": "2.5.17",
-    "vue-baidu-map-business": "^1.0.8",
+    "vue-baidu-map-business": "^1.0.9",
+    "vue-pop-album": "^1.0.2",
+    "vue-property-decorator": "^8.1.0",
     "vue-router": "3.0.1",
     "vuex": "3.0.1"
   },

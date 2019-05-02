@@ -44,22 +44,20 @@
         </template>
       </ul>
     </div>
-    <ALBUM v-if="isShow" :files="albumList" :index="current" :name="'image'" :close="() => isShow=false">
+    <Album v-if="isShow" :files="albumList" :index="current" :name="'image'" :close="() => isShow=false">
       <!-- 相册组件 -->
       <!-- name: 图片路径对应展示的字段  -->
       <!-- prefix: 前缀 -->
       <!-- albumList: 数据源 -->
       <!-- current: 当前页 -->
       <!-- close: 关闭的Function-->
-    </ALBUM>
+    </Album>
   </div>
 </template>
 <script>
 import { getAlbumList } from '@/api/files'
-import ALBUM from '@/components/Files/Album'
 export default {
-  name: 'Album',
-  components: { ALBUM },
+  components: { },
   data() {
     return {
       albumList: [],
@@ -84,7 +82,7 @@ export default {
       console.log(item, index)
       this.current = index
       this.isShow = true
-    },
+    }
   }
 }
 </script>

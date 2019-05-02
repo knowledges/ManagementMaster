@@ -148,6 +148,9 @@ export const constantRouterMap = [
 export default new Router({
   // base: '/woods/', // 外网
   mode: 'history',
-  scrollBehavior: () => ({ x: 0, y: 0 }),
-  routes: constantRouterMap
+  routes: constantRouterMap,
+  scrollBehavior: function(to, from, savedPosition) {
+    console.log('1234')
+    return savedPosition || { x: 0, y: 0 }
+  }
 })

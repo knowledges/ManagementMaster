@@ -95,7 +95,11 @@ HTML自闭合(self-closing)标签：
 将 api 替换 getscript
 <script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak=myAK"></script>
 ```
-热更新报错 Errors while compiling. Reload prevented.
+## 热更新报错 Errors while compiling. Reload prevented.
 ```bash
 组件里有热更新到导致的
 ```
+##  Maximum call stack size exceeded
+ ```
+ 组件里使用的name 和 模块中对于的name 是用一个导致的
+ ```

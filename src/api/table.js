@@ -7,3 +7,11 @@ export function getList(params) {
     params
   })
 }
+
+export function getTableList(params) {
+  return request({
+    url: '/table/selectList',
+    method: 'get',
+    params
+  })
+}
